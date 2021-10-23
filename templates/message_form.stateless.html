@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Message form Stateless | foamapp.go</title>
+    </head>
+    <body>
+        <form action="/confirmation-stateless" method="POST">
+            <input type="hidden" name="name" value={{ .Name }}>
+            <input type="hidden" name="birthday" value={{ .Birthday }}>
+            <label for="message">メッセージ: </label><br>
+            <textarea name="message"></textarea><br>
+            <input type="submit" value="next">
+        </form>
+        <form action="/date-form-stateless" method="POST">
+            <input type="hidden" name="name" value={{ .Name }}>
+            <input type="submit" value="back">
+        </form>
+    </body>
+</html>
