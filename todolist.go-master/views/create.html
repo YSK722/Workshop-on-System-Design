@@ -1,8 +1,0 @@
-{{ template "header" . }}
-<h1>Create a new task</h1>
-<form action="/create/confirm" method="POST">
-    <label for="Title">タイトル: </label><input type="text" name="Title" required><br>
-    <label for="DLString">締め切り: </label><input type="datetime-local" name="DLString"><br>
-    <input type="submit" value="作成">
-</form>
-{{ template "footer" }}
