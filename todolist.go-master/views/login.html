@@ -1,0 +1,12 @@
+{{ template "header" . }}
+<h1>{{ .Title }}</h1>
+<form action="/login/confirm" method="POST">
+    <dl>
+        <dt><label for="Name">アカウント名: </label></dt>
+        <dd><input type="text" name="Name" required></dd>
+        <dt><label for="Pwd">パスワード: </label></dt>
+        <dd><input type="password" name="Pwd" required></dd>
+    </dl>
+    <input type="submit" value="ログイン">
+</form>
+{{ template "footer" }}
