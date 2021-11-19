@@ -1,0 +1,23 @@
+{{ template "header" . }}
+<h1>Search for tasks</h1>
+<table>
+    <tr>
+        <th>
+            <form action="/list" method="GET">
+                <input type="hidden" name="IsDone" value="false">
+                <input type="submit" value="未完了タスク">
+            </form>
+        </th>
+        <th>
+            <form action="/list" method="GET">
+                <input type="hidden" name="IsDone" value="true">
+                <input type="submit" value="完了タスク">
+            </form>
+        </th>
+    </tr>
+</table>
+<form action="/list" method="GET">
+    <label for="query">文字列検索: </label><input type="text" name="query">
+    <input type="submit" value="検索">
+</form>
+{{ template "footer" }}

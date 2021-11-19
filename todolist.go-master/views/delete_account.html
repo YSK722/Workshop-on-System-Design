@@ -1,0 +1,18 @@
+{{ template "header" . }}
+<h1>Delete an account</h1>
+<form action="/delete-account/confirm" method="POST" onSubmit="return checkSubmit()">
+    <dl>
+        <dt><label for="Name">アカウント名: </label></dt>
+        <dd><input type="text" name="Name" required></dd>
+        <dt><label for="Pwd">パスワード: </label></dt>
+        <dd><input type="password" name="Pwd" required></dd>
+    </dl>
+    <input type="submit" value="アカウント削除">
+</form>
+{{ template "footer" }}
+
+<script>
+    function checkSubmit() {
+        return confirm("Are you sure to delete this account?");
+    }
+</script>

@@ -1,0 +1,48 @@
+{{ template "header" . }}
+<h1>{{ .Task.Title }}</h1>
+<dl>
+    <dt>締め切り</dt>
+        <dd>{{ .Task.Deadline }}</dd>
+    <dt>登録日</dt>
+        <dd>{{ .Task.CreatedAt }}</dd>
+    <dt>状態</dt>
+        <dd>{{ if .Task.IsDone }}完了{{ else }}未完了{{ end }}</dd>
+</dl>
+<table>
+    <tr>
+        <th>
+            <form action="/task/{{ .Task.ID }}/edit" method="GET">
+                <input type="hidden" name="ID" value={{ .Task.ID }}>
+                <input type="hidden" name="Title" value={{ .Task.Title }}>
+                <input type="hidden" name="DLString" value={{ .DLString }}>
+                <input type="hidden" name="IsDone" value={{ .Task.IsDone }}>
+                <input type="submit" value="編集">
+            </form>
+        </th>
+        <th>
+            <form action="/task/{{ .Task.ID }}/delete" method="POST" onSubmit="return checkSubmit()">
+                <input type="hidden" name="ID" value={{ .Task.ID }}>
+                <input type="hidden" name="Title" value={{ .Task.Title }}>
+                <input type="submit" value="削除">
+            </form>
+        </th>
+    </tr>
+</table>
+<br>
+<form action="/task/{{ .Task.ID }}/share" method="POST" onSubmit="return checkSubmit2()">
+    <input type="hidden" name="ID" value={{ .Task.ID }}>
+    <input type="hidden" name="Title" value={{ .Task.Title }}>
+    <label for="Name">アカウント名: </label><input type="text" name="Name" required>
+    <input type="submit" value="共有">
+</form>
+{{ template "footer" }}
+
+<script>
+function checkSubmit() {
+	return confirm("Are you sure to delete it?");
+}
+
+function checkSubmit2() {
+	return confirm("Are you sure to share it?");
+}
+</script>
